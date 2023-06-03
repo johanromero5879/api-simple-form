@@ -12,7 +12,8 @@ const AppDataSource = new DataSource({
     synchronize: true,
     entities: [
         FormEntity
-    ]
+    ],
+    ssl: process.env.ENV === "prod",
 })
 
 export const initDatabase = async () => {
