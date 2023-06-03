@@ -9,6 +9,7 @@ export class FormController {
 
         const form = await container.form.createForm({ fullname, country })
         
-        res.json(form)
+        // 201: Created
+        res.status(201).json(form)
     }
 }

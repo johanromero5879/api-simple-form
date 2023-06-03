@@ -8,5 +8,6 @@ export const validateEntity = (req: Request, res: Response, next: NextFunction) 
         return next();
     }
     
+    // 422: Unprocessable Entity
     return res.status(422).json({ errors: errors.array() });
 }

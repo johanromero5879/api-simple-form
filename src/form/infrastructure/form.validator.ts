@@ -6,19 +6,21 @@ import { validateEntity } from "@common/infrastructure"
 export const validateCreate = [
     check("fullname")
         .exists()
-        .withMessage("El campo es requerido")
+        .withMessage("El nombre es requerido")
         .notEmpty()
-        .withMessage("El campo no debe ir vacío")
+        .withMessage("El nombre no debe ir vacío")
         .isLength({ min: 2, max: 50 })
-        .withMessage("El campo debe ser entre 2-50 caracteres"),
+        .withMessage("El nombre debe ser entre 2-50 caracteres")
+        .custom(value => /^([a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+\s?)+$/.test(value))
+        .withMessage("Debe ingresar un nombre válido"),
 
     check("country")
         .exists()
-        .withMessage("El campo es requerido")
+        .withMessage("El país es requerido")
         .notEmpty()
-        .withMessage("El campo no debe ir vacío")
+        .withMessage("El país no debe ir vacío")
         .isLength({ min: 4, max: 30 })
-        .withMessage("El campo debe ser entre 4-30 caracteres"), 
+        .withMessage("El país debe ser entre 4-30 caracteres"), 
 
 
     (req: Request, res: Response, next: NextFunction) => {
